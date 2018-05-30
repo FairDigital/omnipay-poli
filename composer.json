@@ -33,10 +33,6 @@
         "omnipay/common": "~3"
     },
     "require-dev": {
-        "guzzle/plugin-mock": "~3.1",
-        "mockery/mockery": "~0.7",
-        "phpunit/phpunit": "~3.7.0",
-        "squizlabs/php_codesniffer": "~1.4",
         "omnipay/tests": "~3"
     },
     "extra": {

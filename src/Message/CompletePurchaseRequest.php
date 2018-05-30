@@ -43,23 +43,23 @@ class CompletePurchaseRequest extends PurchaseRequest
         return $data;
     }
 
+    /**
+     * @return \Omnipay\Common\Message\ResponseInterface|CompletePurchaseResponse|PurchaseResponse
+     * @throws InvalidRequestException
+     * @throws InvalidResponseException
+     */
     public function send()
     {
-        return $this->sendData($this->getData());
-    }
-
-    public function sendData($data)
-    {
-        $request = $this->httpClient->get($this->endpoint)
-            ->setAuth($this->getMerchantCode(), $this->getAuthenticationCode());
-        $request->getQuery()->replace($data);
-        $httpResponse = $request->send();
-
-        return $this->response = new CompletePurchaseResponse($this, $httpResponse->getBody());
+        return $this->response = new CompletePurchaseResponse($this, $this->sendData($this->getData()));
     }
 
     public function getToken()
     {
         return $this->getParameter('token');
+    }
+
+    public function getHttpMethod()
+    {
+        return 'GET';
     }
 }

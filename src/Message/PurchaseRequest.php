@@ -2,8 +2,6 @@
 
 namespace Omnipay\Poli\Message;
 
-use Omnipay\Common\Message\AbstractRequest;
-
 /**
  * Poli Purchase Request
  * 
@@ -13,26 +11,10 @@ class PurchaseRequest extends AbstractRequest
 {
     protected $endpoint = 'https://poliapi.apac.paywithpoli.com/api/v2/Transaction/Initiate';
 
-    public function getMerchantCode()
-    {
-        return $this->getParameter('merchantCode');
-    }
-
-    public function setMerchantCode($value)
-    {
-        return $this->setParameter('merchantCode', $value);
-    }
-
-    public function getAuthenticationCode()
-    {
-        return $this->getParameter('authenticationCode');
-    }
-
-    public function setAuthenticationCode($value)
-    {
-        return $this->setParameter('authenticationCode', $value);
-    }
-
+    /**
+     * @return array|mixed
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     */
     public function getData()
     {
         $this->validate(
@@ -87,30 +69,14 @@ class PurchaseRequest extends AbstractRequest
         return substr($field, 0, 12);
     }
 
+    /**
+     * @return \Omnipay\Common\Message\ResponseInterface|PurchaseResponse
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws \Omnipay\Common\Exception\InvalidResponseException
+     */
     public function send()
     {
-        return $this->sendData($this->getData());
-    }
-
-    public function sendData($data)
-    {
-        $merchantCode = $this->getMerchantCode();
-        $authenticationCode = $this->getAuthenticationCode();
-        $auth = base64_encode($merchantCode.":".$authenticationCode); //'S61xxxxx:AuthCode123');
-        unset($data['MerchantCode'], $data['AuthenticationCode']);
-
-        //$postdata = $this->packageData($data);
-        $postdata = json_encode($data);
-        $httpRequest = $this->httpClient->post(
-            $this->endpoint,
-            array(
-                'Content-Type'=>'application/json',
-                'Authorization' => 'Basic '.$auth,
-            ),
-            $postdata
-        );
-        $httpResponse = $httpRequest->send();
-        return $this->response = new PurchaseResponse($this, $httpResponse->getBody());
+        return new PurchaseResponse($this, $this->sendData($this->getData()));
     }
 
     protected function packageData($data)
@@ -132,5 +98,10 @@ class PurchaseRequest extends AbstractRequest
                         .$fields.
                     '</Transaction>
                 </InitiateTransactionRequest>';
+    }
+
+    public function getEndpoint()
+    {
+        return $this->endpoint;
     }
 }

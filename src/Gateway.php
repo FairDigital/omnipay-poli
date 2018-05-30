@@ -8,6 +8,14 @@ use Omnipay\Common\AbstractGateway;
  * Class Gateway
  *
  * @package Omnipay\Poli
+ * @method \Omnipay\Common\Message\RequestInterface authorize(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
  */
 class Gateway extends AbstractGateway
 {
@@ -70,5 +78,23 @@ class Gateway extends AbstractGateway
     public function fetchCheckout(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Poli\Message\FetchCheckoutRequest', $parameters);
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @throws \Exception
+     */
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface authorize(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
+        throw new \Exception("Method not implemented");
     }
 }

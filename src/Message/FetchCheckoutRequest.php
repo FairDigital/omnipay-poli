@@ -2,32 +2,14 @@
 
 namespace Omnipay\Poli\Message;
 
-use Omnipay\Common\Message\AbstractRequest;
-
 class FetchCheckoutRequest extends AbstractRequest
 {
     protected $endpoint = 'https://poliapi.apac.paywithpoli.com/api/v2/Transaction/GetTransaction';
 
-    public function getMerchantCode()
-    {
-        return $this->getParameter('merchantCode');
-    }
-
-    public function setMerchantCode($value)
-    {
-        return $this->setParameter('merchantCode', $value);
-    }
-
-    public function getAuthenticationCode()
-    {
-        return $this->getParameter('authenticationCode');
-    }
-
-    public function setAuthenticationCode($value)
-    {
-        return $this->setParameter('authenticationCode', $value);
-    }
-
+    /**
+     * @return array|mixed
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     */
     public function getData()
     {
         $this->validate(
@@ -38,30 +20,29 @@ class FetchCheckoutRequest extends AbstractRequest
         return $data;
     }
 
+    /**
+     * @return \Omnipay\Common\Message\ResponseInterface|FetchCheckoutResponse
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws \Omnipay\Common\Exception\InvalidResponseException
+     */
     public function send()
     {
-        $data = $this->getData();
-        return $this->sendData($data);
+        return $this->response = new FetchCheckoutResponse($this, $this->sendData($this->getData()));
     }
 
-    public function sendData($data)
+    /**
+     * @return string
+     */
+    public function getHttpMethod()
     {
-        $token = $this->httpRequest->query->get('token');
-        $url = $this->endpoint.'?token='.urlencode($token);
+        return 'GET';
+    }
 
-        $merchantCode = $this->getMerchantCode();
-        $authenticationCode = $this->getAuthenticationCode();
-        $auth = base64_encode($merchantCode.":".$authenticationCode); //'S61xxxxx:AuthCode123');
-
-        $httpRequest = $this->httpClient->get(
-            $url,
-            array(
-                'Content-Type'=>'application/json',
-                'Authorization' => 'Basic '.$auth,
-            )
-        );
-        $httpResponse = $httpRequest->send();
-        return $this->response = new FetchCheckoutResponse($this, $httpResponse->getBody(true));
-
+    /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
     }
 }

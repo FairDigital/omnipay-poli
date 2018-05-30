@@ -19,7 +19,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      * PurchaseResponse constructor.
      *
      * @param RequestInterface $request
-     * @param EntityBody $data
+     * @param string $data
      * @throws InvalidResponseException
      */
     public function __construct(RequestInterface $request, $data)
