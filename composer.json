@@ -22,6 +22,11 @@
             "name": "Sid Bachtiar",
             "email": "sid.bachtiar@gmail.com",
             "homepage": "http://onlinesid.com"
+        },
+        {
+            "name": "Aaron Florey",
+            "email": "aaron@fairdigital.com.au",
+            "homepage": "https://fairdigital.com.au"
         }
     ],
     "autoload": {
@@ -34,10 +39,5 @@
     },
     "require-dev": {
         "omnipay/tests": "~3"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
     }
 }
