@@ -34,7 +34,8 @@ class Gateway extends AbstractGateway
     {
         return array(
             'merchantCode' => '',
-            'authenticationCode' => ''
+            'authenticationCode' => '',
+            'apiUrl' => 'https://poliapi.apac.paywithpoli.com/'
         );
     }
 
@@ -44,6 +45,23 @@ class Gateway extends AbstractGateway
     public function getMerchantCode()
     {
         return $this->getParameter('merchantCode');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiUrl()
+    {
+        return $this->getParameter('apiUrl');
+    }
+
+    /**
+     * @param $value
+     * @return $this
+     */
+    public function setApiUrl($value)
+    {
+        return $this->setParameter('apiUrl', $value);
     }
 
     /**

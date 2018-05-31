@@ -5,7 +5,15 @@ namespace Omnipay\Poli\Message;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    abstract public function getEndpoint();
+    public $endpoint;
+
+    /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->getParameter('apiUrl') . $this->endpoint;
+    }
 
     /**
      * Get HTTP Method.
@@ -59,7 +67,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function sendData($data)
     {
-        $endpoint = ($this->getHttpMethod() == 'GET') ? $this->getEndpoint() . '?' . http_build_query($data) : $this->getEndpoint() ;
+        $endpoint = ($this->getHttpMethod() == 'GET') ? $this->getEndpoint() . '?' . http_build_query($data) : $this->getEndpoint();
         $httpResponse = $this->httpClient->request($this->getHttpMethod(), $endpoint, $this->getHeaders(), json_encode($data));
         return $httpResponse->getBody()->getContents();
     }

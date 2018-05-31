@@ -4,7 +4,7 @@ namespace Omnipay\Poli\Message;
 
 class FetchCheckoutRequest extends AbstractRequest
 {
-    protected $endpoint = 'https://poliapi.apac.paywithpoli.com/api/v2/Transaction/GetTransaction';
+    public $endpoint = '/api/v2/Transaction/GetTransaction';
 
     /**
      * @return array|mixed
@@ -36,13 +36,5 @@ class FetchCheckoutRequest extends AbstractRequest
     public function getHttpMethod()
     {
         return 'GET';
-    }
-
-    /**
-     * @return string
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 }

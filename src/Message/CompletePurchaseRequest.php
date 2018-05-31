@@ -14,7 +14,7 @@ use Omnipay\Common\Exception\InvalidResponseException;
 class CompletePurchaseRequest extends PurchaseRequest
 {
     //protected $endpoint = "https://publicapi.apac.paywithpoli.com/api/Transaction/GetTransaction";
-    protected $endpoint = 'https://poliapi.apac.paywithpoli.com/api/v2/Transaction/GetTransaction';
+    public $endpoint = '/api/v2/Transaction/GetTransaction';
 
     public function getData()
     {

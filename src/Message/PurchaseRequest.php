@@ -9,7 +9,7 @@ namespace Omnipay\Poli\Message;
  */
 class PurchaseRequest extends AbstractRequest
 {
-    protected $endpoint = 'https://poliapi.apac.paywithpoli.com/api/v2/Transaction/Initiate';
+    public $endpoint = '/api/v2/Transaction/Initiate';
 
     /**
      * @return array|mixed
@@ -98,10 +98,5 @@ class PurchaseRequest extends AbstractRequest
                         .$fields.
                     '</Transaction>
                 </InitiateTransactionRequest>';
-    }
-
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 }
