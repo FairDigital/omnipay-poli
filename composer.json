@@ -1,5 +1,5 @@
 {
-    "name": "burnbright/omnipay-poli",
+    "name": "fairdigital/omnipay-poli",
     "type": "library",
     "description": "POLi driver for the Omnipay payment processing library",
     "keywords": [
@@ -10,19 +10,9 @@
         "POLi",
         "payment"
     ],
-    "homepage": "https://github.com/burnbright/omnipay-poli",
+    "homepage": "https://github.com/fairdigital/omnipay-poli",
     "license": "MIT",
     "authors": [
-        {
-            "name": "Jeremy Shipman",
-            "email": "jeremy@burnbright.net",
-            "homepage": "http://jeremyshipman.com"
-        },
-        {
-            "name": "Sid Bachtiar",
-            "email": "sid.bachtiar@gmail.com",
-            "homepage": "http://onlinesid.com"
-        },
         {
             "name": "Aaron Florey",
             "email": "aaron@fairdigital.com.au",
