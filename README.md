@@ -1,13 +1,13 @@
-# Omnipay: Poli
+# Omnipay: Polipay
 
-**Poli driver for the Omnipay PHP payment processing library**
+**Polipay driver for the Omnipay PHP payment processing library**
 
 Website: http://www.polipay.co.nz
 Developer Docs: http://www.polipaymentdeveloper.com/
 
-[![Build Status](https://travis-ci.org/burnbright/omnipay-poli.png?branch=master)](https://travis-ci.org/burnbright/omnipay-poli)
-[![Latest Stable Version](https://poser.pugx.org/burnbright/omnipay-poli/version.png)](https://packagist.org/packages/burnbright/omnipay-Poli)
-[![Total Downloads](https://poser.pugx.org/burnbright/omnipay-poli/d/total.png)](https://packagist.org/packages/burnbright/omnipay-poli)
+[![Build Status](https://travis-ci.org/fairdigital/omnipay-poli.png?branch=master)](https://travis-ci.org/burnbright/omnipay-poli)
+[![Latest Stable Version](https://poser.pugx.org/fairdigital/omnipay-poli/version.png)](https://packagist.org/packages/fairdigital/omnipay-Poli)
+[![Total Downloads](https://poser.pugx.org/fairdigital/omnipay-poli/d/total.png)](https://packagist.org/packages/fairdigital/omnipay-poli)
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Poli support for Omnipay.
@@ -20,7 +20,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "burnbright/omnipay-poli": "~2.0"
+        "fairdigital/omnipay-poli": "~3.0"
     }
 }
 ```
