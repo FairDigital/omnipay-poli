@@ -48,6 +48,23 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     }
 
     /**
+     * @return mixed
+     */
+    public function getApiUrl()
+    {
+        return $this->getParameter('apiUrl');
+    }
+
+    /**
+     * @param $value
+     * @return $this
+     */
+    public function setApiUrl($value)
+    {
+        return $this->setParameter('apiUrl', $value);
+    }
+
+    /**
      * @return array
      */
     public function getHeaders()
